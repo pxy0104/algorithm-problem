@@ -29,12 +29,12 @@ public class MyLinkedList {
     //获取第index个节点的数值，注意index是从0开始的，第0个节点就是头结点
     public int get(int index) {
         //如果index非法，返回-1
-        if (index < 0 || index >= size) {
+        if (index < 0 || index>=size) {
             return -1;
         }
         ListNode currentNode = head;
         //包含一个虚拟头节点，所以查找第 index+1 个节点
-        for (int i = 0; i <= index; i++) {
+        for (int i = 0; i <=index; i++) {
             currentNode = currentNode.next;
         }
         return currentNode.val;
@@ -66,21 +66,25 @@ public class MyLinkedList {
         ListNode toAdd = new ListNode(val);
         toAdd.next = pred.next;
         pred.next = toAdd;
-        return "OK";
+        return "添加成功";
     }
 
     //删除第index个节点
     public void deleteAtIndex(int index) {
-        if (index < 0 || index >= size) {
+        //判断index是否越界
+        if (index < 0 || index >=size) {
             return;
         }
+        //index合法，链表长度-1
         size--;
+        //判断index是否是首结点
         if (index == 0) {
             head = head.next;
             return;
         }
         ListNode pred = head;
-        for (int i = 0; i < index ; i++) {
+        //如果不是首结点，则正常删除
+        for (int i = 0; i < index; i++) {
             pred = pred.next;
         }
         pred.next = pred.next.next;
@@ -90,11 +94,17 @@ public class MyLinkedList {
 
 
         MyLinkedList myLinkedList = new MyLinkedList();
-        myLinkedList.addAtHead(1);
+        System.out.println(myLinkedList.head.val);
+        myLinkedList.addAtIndex(0,21);
+//        myLinkedList.addAtHead(1);
+//        myLinkedList.addAtHead(2);
+        myLinkedList.addAtTail(9);
+//        System.out.println(myLinkedList.get(0));
 
         System.out.println(myLinkedList.addAtIndex(2,2));
         myLinkedList.addAtIndex(3,3);
 //        myLinkedList.addAtTail(4);
+        myLinkedList.deleteAtIndex(1);
         for (int i = 0; i < myLinkedList.size; i++) {
             System.out.println(myLinkedList.get(i));
 
