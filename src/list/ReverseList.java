@@ -10,6 +10,7 @@ package list;
  * 第三步，把cur赋值给prev：prev向前移动一个节点
  * 第四步：把标记节点temp赋值给cur：cur也向前移动一个节点:
  * 到此为止，temp和cur同处原链表第二节点处，prev处在第一节点处，而第一节点指向第二节点的指针指向了prev的初始值null；
+ * 判断条件为cur != null，当循环结束时，temp和cur节点会处于prev最开始的位置，即null节点，此时循环停止，prev也变为反转链表的首节点
  * 2023/4/10
  **/
 
